@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @star.name %>
+</p>
+
+<p>
+  <strong>Bio:</strong>
+  <%= @star.bio %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @star.link %>
+</p>
+
+<%= link_to 'Edit', edit_star_path(@star) %> |
+<%= link_to 'Back', stars_path %>
