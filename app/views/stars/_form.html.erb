@@ -27,8 +27,11 @@
   </div>
 
   <div>
-    <%= form.label :image, "Attach an Image" %><br />
-    <%= form.file_field :image %>
+    <% if @star.image.exists? %>
+      <%= image_tag @star.image.url %> <br/>
+    <% end %>
+      <%= form.label :image, "Attach a New Image" %><br />
+      <%= form.file_field :image %>
   </div>
   </br>
 

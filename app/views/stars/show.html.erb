@@ -5,6 +5,10 @@
   <%= @star.name %>
 </p>
 
+<% if @star.image.exists? %>
+	<p><%= image_tag @star.image.url %></p>
+<% end %>
+
 <p>
   <strong>Bio:</strong>
   <%= @star.bio %>
