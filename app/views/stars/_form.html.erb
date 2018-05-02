@@ -1,4 +1,4 @@
-<%= form_with(model: star, local: true) do |form| %>
+<%= form_with(model: star, local: true, html: {multipart: true}) do |form| %>
   <% if star.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(star.errors.count, "error") %> prohibited this star from being saved:</h2>
@@ -25,6 +25,12 @@
     <%= form.label :link %>
     <%= form.text_field :link, id: :star_link %>
   </div>
+
+  <div>
+    <%= form.label :image, "Attach an Image" %><br />
+    <%= form.file_field :image %>
+  </div>
+  </br>
 
   <div class="actions">
     <%= form.submit %>
