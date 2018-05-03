@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180502160314) do
+ActiveRecord::Schema.define(version: 20180503021114) do
+
+  create_table "podcasts", force: :cascade do |t|
+    t.string "name"
+    t.string "host"
+    t.string "feed"
+    t.text "description"
+    t.string "homepage"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "stars", force: :cascade do |t|
     t.string "name"
