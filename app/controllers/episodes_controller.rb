@@ -3,4 +3,8 @@ class EpisodesController < ApplicationController
 	def index
 		@episodes = Episode.all
 	end
+
+	def edit
+		@episode = Episode.find(params[:id])
+	end
 end
