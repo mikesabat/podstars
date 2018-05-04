@@ -1,4 +1,5 @@
 class Podcast < ApplicationRecord
+	has_many :episodes
 	has_attached_file :image
 	validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
 	#to resize images with paperclip -- has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
