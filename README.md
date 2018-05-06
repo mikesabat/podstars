@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+5/6 - from branch: show ep2
+Status: Most of the basic crud is built via scaffolding. We need to customize a lot of the relationships. 
 
-Things you may want to cover:
+To do:
+Episode form on star#show needs to redirect to star#show upon episode.new submission.
 
-* Ruby version
+Episode form on star#show needs to autofill the current star_id and hide that field.
 
-* System dependencies
+Episode creation requires a star_id
 
-* Configuration
+Episode creation requires a podcast_id. 
 
-* Database creation
+Episode creation lists podcasts in a dropdown. Offers the option to create a podcast if the podcast doesn't already exist. 
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+>> Merge back.
