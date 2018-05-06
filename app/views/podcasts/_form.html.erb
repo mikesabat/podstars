@@ -36,6 +36,15 @@
     <%= form.text_field :homepage, id: :podcast_homepage %>
   </div>
 
+  <div>
+    <% if @podcast.image.exists? %>
+      <%= image_tag @podcast.image.url %> <br/>
+    <% end %>
+      <%= form.label :image, "Attach a New Image" %><br />
+      <%= form.file_field :image %>
+  </div>
+  </br>
+
   <div class="actions">
     <%= form.submit %>
   </div>
