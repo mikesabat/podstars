@@ -12,6 +12,7 @@ class StarsController < ApplicationController
   def show
     @star = Star.find(params[:id])
     @episodes = @star.episodes
+    @episode = Episode.new
   end
 
   # GET /stars/new
