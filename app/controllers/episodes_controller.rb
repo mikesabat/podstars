@@ -25,10 +25,12 @@ class EpisodesController < ApplicationController
   # POST /episodes.json
   def create
     @episode = Episode.new(episode_params)
-
+    @star = Star.find(@episode.star_id)
+    #when we create an episode, we create an instance variable for the star of that episode. We are using this @star for the redirect.
+    #might need to add this to edit method if we decide to open that up.
     respond_to do |format|
       if @episode.save
-        format.html { redirect_to @episode, notice: 'Episode was successfully created.' }
+        format.html { redirect_to @star, notice: 'Episode was successfully created for ' + @star.name }
         format.json { render :show, status: :created, location: @episode }
       else
         format.html { render :new }

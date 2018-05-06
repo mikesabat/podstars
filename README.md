@@ -4,7 +4,7 @@
 Status: Most of the basic crud is built via scaffolding. We need to customize a lot of the relationships. 
 
 To do:
-Episode form on star#show needs to redirect to star#show upon episode.new submission.
+Episode form on star#show needs to redirect to star#show upon episode.new submission. Check!
 
 Episode form on star#show needs to autofill the current star_id and hide that field.
 
