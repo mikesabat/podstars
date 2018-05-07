@@ -22,8 +22,10 @@
   </div>
 
   <div class="field">
-    <%= form.label :star_id %>
-    <%= form.number_field :star_id, id: :episode_star_id %>
+       
+    <%= form.hidden_field :star_id, value: @star.id %> <!-- https://stackoverflow.com/questions/3131982/how-do-i-use-hidden-field-in-a-form-for-in-ruby-on-rails -->
+    <!--  <%= form.label :star_id %> -->
+    <!-- <%= form.number_field :star_id, id: :episode_star_id %> -->
   </div>
 
   <div class="field">
