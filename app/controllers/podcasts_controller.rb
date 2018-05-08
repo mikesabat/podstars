@@ -7,6 +7,11 @@ class PodcastsController < ApplicationController
     @podcasts = Podcast.all
   end
 
+  def lookup
+    
+    render html: 'The lookup page loads'.html_safe
+  end
+
   # GET /podcasts/1
   # GET /podcasts/1.json
   def show

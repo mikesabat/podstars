@@ -21,13 +21,14 @@ Episode creation requires a podcast_id. >> this is done in the controller.
 5/8 branch cleanup? ::: later.
 image sizing.
 comment out un-useful pages
+add podcast images
 
 or 
 5/8 branch for itunes, podcast search
-Create branch
+Create branch check
 Create Podcast lookup controller
 Create podcast lookup form
-gem install httparty
+gem install httparty -- think so. 
 Query itunes api and return data
 Parse json to build @podcast.new
 @podcast autofill /new forms or directly to create function.

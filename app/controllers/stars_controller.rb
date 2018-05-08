@@ -22,7 +22,7 @@ class StarsController < ApplicationController
       @choices.push(pod) 
     end 
     
-    @choices.push(["Create Podcast", nil]) 
+    @choices.push(["Create New Podcast", nil]) 
   end
 
   # GET /stars/new
