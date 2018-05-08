@@ -17,3 +17,19 @@ Episode creation lists podcasts in a dropdown. Offers the option to create a pod
 Episode creation requires a podcast_id. >> this is done in the controller.
 
 >> Merge back.
+
+5/8 branch cleanup? ::: later.
+image sizing.
+comment out un-useful pages
+
+or 
+5/8 branch for itunes, podcast search
+Create branch
+Create Podcast lookup controller
+Create podcast lookup form
+gem install httparty
+Query itunes api and return data
+Parse json to build @podcast.new
+@podcast autofill /new forms or directly to create function.
+
+User flow - when we want to add a new podcast, we will search in PA, return the results from itunes and then add the details based on what itunes returns. 
