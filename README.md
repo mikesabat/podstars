@@ -10,11 +10,10 @@ Episode form on star#show needs to autofill the current star_id and hide that fi
 
 Episode creation requires a star_id
 
-Episode creation requires a podcast_id. 
-
-Episode creation lists podcasts in a dropdown. Offers the option to create a podcast if the podcast doesn't already exist. 
+Episode creation lists podcasts in a dropdown. Offers the option to create a podcast if the podcast doesn't already exist. check although, not clean
 <!-- <%= form.select :star_id, options_for_select([[@star.name, @star.id]]) %>  -->
+<!-- <%= form.select :podcast_id, options_for_select([[@podcast.name, @podcast.id]]) %>  -->
+
+Episode creation requires a podcast_id. >> this is done in the controller.
 
 >> Merge back.
-
-git commit -m"Hide Star field on Episode form. Automatically enter Star from star#show page with episode form

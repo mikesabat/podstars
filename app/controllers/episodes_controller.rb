@@ -28,6 +28,13 @@ class EpisodesController < ApplicationController
     @star = Star.find(@episode.star_id)
     #when we create an episode, we create an instance variable for the star of that episode. We are using this @star for the redirect.
     #might need to add this to edit method if we decide to open that up.
+    
+    if @episode.podcast_id == nil
+      redirect_to new_podcast_path, :alert => "Sorry, please create the podcast first"
+      #notice doesn't show when arriving on"/podcasts/new" Is it possible to move this logic to a berfore_save callback?
+      return
+    end
+
     respond_to do |format|
       if @episode.save
         format.html { redirect_to @star, notice: 'Episode was successfully created for ' + @star.name }

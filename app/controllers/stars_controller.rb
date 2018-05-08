@@ -13,6 +13,16 @@ class StarsController < ApplicationController
     @star = Star.find(params[:id])
     @episodes = @star.episodes
     @episode = Episode.new
+    @podcasts = Podcast.all
+
+    @choices = [] 
+    @podcasts.each do |p| 
+      pod = [] 
+      pod.push(p.name, p.id) 
+      @choices.push(pod) 
+    end 
+    
+    @choices.push(["Create Podcast", nil]) 
   end
 
   # GET /stars/new
