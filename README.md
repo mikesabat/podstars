@@ -25,12 +25,19 @@ add podcast images
 
 or 
 5/8 branch for itunes, podcast search
-Create branch check
-Create Podcast lookup controller
-Create podcast lookup form
-gem install httparty -- think so. 
-Query itunes api and return data
+Create branch - check
+Create lookup controller check
+Create lookup form check
+Capture @lookup check 
+Change @lookup = "podcast name" to "podcast+name" check
+Build itunes link check
+Query itunes
+Save returned data.
+	gem install httparty -- think so. 
+	Query itunes api and return data
 Parse json to build @podcast.new
 @podcast autofill /new forms or directly to create function.
 
 User flow - when we want to add a new podcast, we will search in PA, return the results from itunes and then add the details based on what itunes returns. 
+
+itunes query url: https://itunes.apple.com/search?attribute=titleTerm&entity=podcast&media=podcast&term=search+term&limit=5&lang=en_us
