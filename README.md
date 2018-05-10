@@ -18,13 +18,19 @@ Episode creation requires a podcast_id. >> this is done in the controller.
 
 >> Merge back.
 
-5/8 branch cleanup? ::: later.
+5/10 branch cleanup?
 image sizing.
 comment out un-useful pages
 add podcast images
+podcast must be unique
 
-or 
-5/8 branch for itunes, podcast search
+
+
+User flow - when we want to add a new podcast, we will search in PA, return the results from itunes and then add the details based on what itunes returns. 
+
+itunes query url: https://itunes.apple.com/search?attribute=titleTerm&entity=podcast&media=podcast&term=search+term&limit=5&lang=en_us
+
+PUSHED 5/10 branch for itunes, podcast search
 Create branch - check
 Create lookup controller check
 Create lookup form check
@@ -38,7 +44,3 @@ Save returned data. check
 	Query itunes api and return data
 Parse json to build & display podcast - check
 @podcast autofill /new forms or directly to create function. -check 
-
-User flow - when we want to add a new podcast, we will search in PA, return the results from itunes and then add the details based on what itunes returns. 
-
-itunes query url: https://itunes.apple.com/search?attribute=titleTerm&entity=podcast&media=podcast&term=search+term&limit=5&lang=en_us
