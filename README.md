@@ -36,8 +36,8 @@ Query itunes check
 Save returned data. check
 	gem install httparty -- think so. 
 	Query itunes api and return data
-Parse json to build @podcast.new
-@podcast autofill /new forms or directly to create function.
+Parse json to build & display podcast - check
+@podcast autofill /new forms or directly to create function. -check 
 
 User flow - when we want to add a new podcast, we will search in PA, return the results from itunes and then add the details based on what itunes returns. 
 
