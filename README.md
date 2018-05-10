@@ -31,19 +31,9 @@ Create lookup form check
 Capture @lookup check 
 Change @lookup = "podcast name" to "podcast+name" check
 Build itunes link check
-
-Query itunes
-	res = response[:results]
-	puts res
-	puts "======+"
-	jjj = res[0]
-	puts jjj
-
-	puts "++++++++++"
-
-	hhh = jjj[:artistName]
-	puts hhh
-Save returned data.
+Query itunes check
+	
+Save returned data. check
 	gem install httparty -- think so. 
 	Query itunes api and return data
 Parse json to build @podcast.new

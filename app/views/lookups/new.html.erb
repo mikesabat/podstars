@@ -1,4 +1,35 @@
 <h1>Lookup a Podcast in itunes</h1>
 
 <%= render 'form' %>
-<!-- <%= link_to 'Back', episodes_path %> -->
+
+<% if @actual_data %>
+	<table>
+  		<thead>
+		    <tr>
+		      <th>Artist Name</th>
+		      <th>Podcast Name</th>
+		      <th>Feed</th>
+		      <th colspan="3"></th>
+		    </tr>
+  		</thead>
+  		<tbody>
+  			<% artist_name = @actual_data[:artistName] %>
+  			<% collection_name = @actual_data[:collectionName] %> 
+  			<% feed_url = @actual_data[:feedUrl] %>
+
+  			<tr>
+  				<td><%= artist_name %></td>
+  				<td><%= collection_name %></td>
+  				<td><%= feed_url %></td>
+  			</tr>
+  			
+  			
+  				
+  			
+  		</tbody>
+
+	
+	</table>
+	
+<% end %>
+
