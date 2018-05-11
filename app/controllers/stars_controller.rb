@@ -23,6 +23,8 @@ class StarsController < ApplicationController
     end 
     
     @choices.push(["Create New Podcast", nil]) 
+
+    #above this shows how to manually enter a podcast episode with this star. Below, we want to query itunes for this star and display the resutls. 
   end
 
   # GET /stars/new

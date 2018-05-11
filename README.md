@@ -19,10 +19,15 @@ Episode creation requires a podcast_id. >> this is done in the controller.
 >> Merge back.
 
 5/10 branch cleanup?
-image sizing.
-comment out un-useful pages
-add podcast images
-podcast must be unique
+add podcast images -- need to ask zach.
+image sizing - check
+comment out un-useful pages (podcast new, episode index, episode new, episode show) - check
+Check the number of results from itunes#podcast - I don't think we'll need this. Eventually, we will search for a star - find the podcast and then add the podcast and the star. Maybe rethink the user flow. 
+podcasts/new is broke. Should we hide it and make all podcast creation happen after search? - check
+podcast must be unique - cccccheck
+star must be unique - check
+Links in the app -- 
+Create New Podcast routes to /lookup - check
 
 
 

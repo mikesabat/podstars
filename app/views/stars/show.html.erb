@@ -6,7 +6,7 @@
 </p>
 
 <% if @star.image.exists? %>
-	<p><%= image_tag @star.image.url %></p>
+	<p><%= image_tag @star.image.url(:medium) %></p>
 <% end %>
 
 <p>
@@ -19,11 +19,10 @@
   <%= @star.link %>
 </p>
 
-<%= link_to 'Edit', edit_star_path(@star) %> |
-<%= link_to 'Back', stars_path %>
+<%= link_to 'Edit', edit_star_path(@star) %>
 
 <br/>
-<h2> <%= @star.name %> Podcast Episodes </h2><br/>
+<h2> Available <%= @star.name %> Podcasts </h2><br/>
 
 <table>
   <thead>
@@ -43,9 +42,6 @@
         <td><%= ep.description %></td>
         <td><%= ep.star_id %></td>
         <td><%= ep.podcast_id %></td>
-        <!-- <td><%= link_to 'Show', ep %></td>
-        <td><%= link_to 'Edit', edit_episode_path(ep) %></td>
-        <td><%= link_to 'Destroy', ep, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
       </tr>
     <% end %>
   </tbody>

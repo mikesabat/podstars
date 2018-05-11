@@ -30,7 +30,7 @@ class EpisodesController < ApplicationController
     #might need to add this to edit method if we decide to open that up.
     
     if @episode.podcast_id == nil
-      redirect_to new_podcast_path, :alert => "Sorry, please create the podcast first"
+      redirect_to lookup_path, :alert => "Sorry, please create the podcast first"
       #notice doesn't show when arriving on"/podcasts/new" Is it possible to move this logic to a berfore_save callback?
       return
     end

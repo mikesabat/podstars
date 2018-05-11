@@ -24,18 +24,10 @@ class PodcastsController < ApplicationController
   # POST /podcasts
   # POST /podcasts.json
   def create
-    # @podcast = Podcast.new(podcast_params)
-    puts "+++"
-    puts params[:name]
-
-    puts "+++"
-    puts params[:hhh]
-
-    puts "+++"
-    puts params[:feed]
-
-    @podcast = Podcast.new(:name => params[:name], :host => params[:hhh], :feed => params[:feed])
-
+    @podcast = Podcast.new(:name => params[:name], :host => params[:hhh], :feed => params[:feed]) #, :image => URI.parse(params[:image])
+    url = params[:image]
+    # @podcast.picture_from_url(url)
+    
     respond_to do |format|
       if @podcast.save
         format.html { redirect_to @podcast, notice: 'Podcast was successfully created.' }
