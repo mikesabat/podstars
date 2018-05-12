@@ -18,18 +18,6 @@ Episode creation requires a podcast_id. >> this is done in the controller.
 
 >> Merge back.
 
-5/10 branch cleanup?
-add podcast images -- need to ask zach.
-image sizing - check
-comment out un-useful pages (podcast new, episode index, episode new, episode show) - check
-Check the number of results from itunes#podcast - I don't think we'll need this. Eventually, we will search for a star - find the podcast and then add the podcast and the star. Maybe rethink the user flow. 
-podcasts/new is broke. Should we hide it and make all podcast creation happen after search? - check
-podcast must be unique - cccccheck
-star must be unique - check
-Links in the app -- 
-Create New Podcast routes to /lookup - check
-
-
 
 User flow - when we want to add a new podcast, we will search in PA, return the results from itunes and then add the details based on what itunes returns. 
 
@@ -49,3 +37,23 @@ Save returned data. check
 	Query itunes api and return data
 Parse json to build & display podcast - check
 @podcast autofill /new forms or directly to create function. -check 
+
+5/10 branch cleanup?
+add podcast images -- need to ask zach.
+image sizing - check
+comment out un-useful pages (podcast new, episode index, episode new, episode show) - check
+Check the number of results from itunes#podcast - I don't think we'll need this. Eventually, we will search for a star - find the podcast and then add the podcast and the star. Maybe rethink the user flow. 
+podcasts/new is broke. Should we hide it and make all podcast creation happen after search? - check
+podcast must be unique - cccccheck
+star must be unique - check
+Links in the app -- check
+Create New Podcast routes to /lookup - check
+MERGE BACK
+
+
+Save Podcast image from search/url.
+Search for guest >> automatically add a podcast.
+** We cannot link directly to an episode in itunes. It will just link to the page.
+ -- Can we find a way to link directly.
+ -- Can we put a player on the site?
+ -- Can we figure out a schema to install a player given itunes link, episode information and feed URL?
