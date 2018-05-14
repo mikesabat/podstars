@@ -5,6 +5,7 @@ class StarsController < ApplicationController
   # GET /stars.json
   def index
     @stars = Star.all
+    @star = Star.new
   end
 
   # GET /stars/1

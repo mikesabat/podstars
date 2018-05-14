@@ -1,5 +1,10 @@
+<!-- #if no star params
+ -->
 <h1>New Star</h1>
 
 <%= render 'form', star: @star %>
 
 <%= link_to 'Back', stars_path %>
+
+<!-- #if star params exist then load a list of Episodes that include star name in the description
+ -->

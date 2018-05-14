@@ -2,6 +2,30 @@
 
 <h1>Stars</h1>
 
+<%= form_with url: new_star_path, method: :get, local: true do |form| %>
+  <% if @star.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(star.errors.count, "error") %> prohibited this star from being saved:</h2>
+
+      <ul>
+      <% star.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label "Search for Star" %>
+    <%= form.text_field :name, id: :star_name %>
+  </div>
+
+    <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+</br>
 <table>
   <thead>
     <tr>
