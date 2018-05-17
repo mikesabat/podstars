@@ -37,12 +37,12 @@ class StarsController < ApplicationController
       star_query = star.gsub(/\s+/, "+")
       puts "We are going to lookup #{star_query}"
       star_query_link = "https://listennotes.p.mashape.com/api/v1/search?len_min=10&offset=0&only_in=title&published_after=0&q=#{star_query}&sort_by_date=0&type=episode" 
-
+      mashape_key = ENV['MASHAPE_KEY']
       
       # These code snippets use an open-source library. http://unirest.io/ruby
       response = HTTParty.get star_query_link,
        headers:{
-       'X-Mashape-Key' => '90BgMbsfzymshsEnheAXVDpN7Km8p10sjUTjsn5PfGX0tBc6K0',
+       'X-Mashape-Key' => mashape_key,
        "Accept" => "application/json"
      }
      puts response
