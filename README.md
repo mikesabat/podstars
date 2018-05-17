@@ -52,7 +52,18 @@ MERGE BACK
 
 
 Save Podcast image from search/url.
-Search for guest >> automatically add a podcast.
+Search for guest >> list podcast with guest in the title. check
+ - Should we save search?
+ - How does pagination work?
+ENV Variables for mashape API key. 
+Click on Episode "+" button
+ - If Star isn't already created, create Star.
+ - If podcast isn't already created, create Podcast
+ - Create Episode and list it for Star.
+
+ Next
+  - Download Audio for episode and put it in player on the site. 
+  - Shorten the Episode description in the view, with the ability to "Show More..."
 ** We cannot link directly to an episode in itunes. It will just link to the page.
  -- Can we find a way to link directly.
  -- Can we put a player on the site?
