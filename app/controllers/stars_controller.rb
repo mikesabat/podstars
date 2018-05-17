@@ -1,5 +1,6 @@
 class StarsController < ApplicationController
   before_action :set_star, only: [:show, :edit, :update, :destroy]
+  require 'unirest'
 
   # GET /stars
   # GET /stars.json
@@ -30,7 +31,47 @@ class StarsController < ApplicationController
 
   # GET /stars/new
   def new
-    @star = Star.new
+    if params[:name]
+      puts "OK we have the params. "
+      star = params[:name].strip
+      star_query = star.gsub(/\s+/, "+")
+      puts "We are going to lookup #{star_query}"
+      star_query_link = "https://listennotes.p.mashape.com/api/v1/search?len_min=10&offset=0&only_in=title&published_after=0&q=#{star_query}&sort_by_date=0&type=episode" 
+
+      
+      # These code snippets use an open-source library. http://unirest.io/ruby
+      response = HTTParty.get star_query_link,
+       headers:{
+       'X-Mashape-Key' => '90BgMbsfzymshsEnheAXVDpN7Km8p10sjUTjsn5PfGX0tBc6K0',
+       "Accept" => "application/json"
+     }
+     puts response
+     num_of_results = response["count"]
+     puts num_of_results
+
+     @episodes_arr = response["results"]
+     
+    @episodes_arr.each do |ep|
+      puts "here's another ep."
+      puts ep["podcast_id"]
+    end
+
+
+      
+
+      # response = HTTParty.get(pod_lookup_link, format: :plain)
+      # json_response = JSON.parse response, symbolize_names: true
+
+      # num_of_results = json_response[:resultCount]
+      # results = json_response[:results]
+
+      # @actual_data = results[0]
+
+      # @podcast = {:name => @actual_data[:collectionName], :host => @actual_data[:artistName], :feed => @actual_data[:feedUrl], :image_url => @actual_data[:artworkUrl60], :big_image =>@actual_data[:artworkUrl600]}
+
+    else
+      @star = Star.new
+    end
   end
 
   # GET /stars/1/edit
@@ -87,4 +128,4 @@ class StarsController < ApplicationController
     def star_params
       params.require(:star).permit(:name, :bio, :link, :image)
     end
-end
+end   

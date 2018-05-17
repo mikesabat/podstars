@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 gem "paperclip"
 
 gem 'httparty', '~> 0.13.7'
+gem 'unirest'
 
 
 # Use Capistrano for deployment
