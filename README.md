@@ -55,7 +55,7 @@ Save Podcast image from search/url.
 Search for guest >> list podcast with guest in the title. check
  - Should we save search?
  - How does pagination work?
-ENV Variables for mashape API key. 
+ENV Variables for mashape API key. check
 Click on Episode "+" button
  - If Star isn't already created, create Star.
  - If podcast isn't already created, create Podcast

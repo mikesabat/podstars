@@ -32,24 +32,27 @@ class StarsController < ApplicationController
   # GET /stars/new
   def new
     if params[:name]
-      puts "OK we have the params. "
-      star = params[:name].strip
-      star_query = star.gsub(/\s+/, "+")
+      @star = Star.new 
+      @star.name = params[:name]
+      puts @star.name
+      
+      star_n = params[:name].strip
+      star_query = star_n.gsub(/\s+/, "+")
       puts "We are going to lookup #{star_query}"
       star_query_link = "https://listennotes.p.mashape.com/api/v1/search?len_min=10&offset=0&only_in=title&published_after=0&q=#{star_query}&sort_by_date=0&type=episode" 
       mashape_key = ENV['MASHAPE_KEY']
       
       # These code snippets use an open-source library. http://unirest.io/ruby
-      response = HTTParty.get star_query_link,
+      @response = HTTParty.get star_query_link,
        headers:{
        'X-Mashape-Key' => mashape_key,
        "Accept" => "application/json"
      }
-     puts response
-     num_of_results = response["count"]
+     puts @response
+     num_of_results = @response["count"]
      puts num_of_results
 
-     @episodes_arr = response["results"]
+     @episodes_arr = @response["results"]
      
     @episodes_arr.each do |ep|
       puts "here's another ep."

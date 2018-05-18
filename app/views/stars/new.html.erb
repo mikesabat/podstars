@@ -1,19 +1,23 @@
-<% if @star != nil %>
+<% if @response == nil %>
  
 	<h1>New Star</h1>
 	<%= render 'form', star: @star %>
 	<%= link_to 'Back', stars_path %>
+<% elsif @response["count"] == 0 %>
+	<h1> We couldn't find anything </h1>
+	<%= link_to 'Back', root_path %>
 <% else %>
 	<h1> Potential Episodes </h1>
 </br>
 	<table>
 	  <thead>
 	    <tr>
-	      <th>Date: </th>
-	      <th>Podcast Name: </th>
-	      <th>Episode Title: </th>
-	      <th>Description: </th>
-	      <th colspan="3"></th>
+	      	<th> </th>
+	      	<th>Date: </th>
+	      	<th>Podcast Name: </th>
+	      	<th>Episode Title: </th>
+	      	<th>Description: </th>
+	      	<th colspan="3"></th>
 	    </tr>
 	  </thead>
 
@@ -21,11 +25,12 @@
 	    <% @episodes_arr.each do |ep| %>
 	    <% sec = (ep["pub_date_ms"].to_f / 1000).to_s %>
 	      <tr>
-	        <td><%= Date.strptime(sec, '%s') %></td>
+	      	<td><%=  %></td>
+	        <td><%= Date.strptime(sec, '%s') %></td>	        
 	        <td><%= ep["podcast_title_original"] %></td>
 	        <td><%= ep["title_original"] %></td>
 	        <td><%= ep["description_original"] %></td>
-	        <td><%=  %></td>
+	        
 	        <td><%=  %></td>
 	      </tr>
 	    <% end %>
