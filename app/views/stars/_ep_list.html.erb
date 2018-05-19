@@ -1,0 +1,27 @@
+<table>
+	  <thead>
+	    <tr>
+	      	<th> </th>
+	      	<th>Date: </th>
+	      	<th>Podcast Name: </th>
+	      	<th>Episode Title: </th>
+	      	<th>Description: </th>
+	      	<th colspan="3"></th>
+	    </tr>
+	  </thead>
+
+	  <tbody>
+	    <% @episodes_arr.each do |ep| %>
+	    <% sec = (ep["pub_date_ms"].to_f / 1000).to_s %>
+	      <tr>
+	      	<td><%=  %></td>
+	        <td><%= Date.strptime(sec, '%s') %></td>	        
+	        <td><%= ep["podcast_title_original"] %></td>
+	        <td><%= ep["title_original"] %></td>
+	        <td><%= ep["description_original"] %></td>
+	        
+	        <td><%=  %></td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+</table>

@@ -1,41 +1,21 @@
-<% if @response == nil %>
+<% if @response == nil %> <!-- If the person just gets to the URL without a search -->
  
 	<h1>New Star</h1>
 	<%= render 'form', star: @star %>
 	<%= link_to 'Back', stars_path %>
-<% elsif @response["count"] == 0 %>
+<% elsif @response["count"] == 0 %> <!-- If the person's search for star returns no results -->
 	<h1> We couldn't find anything </h1>
 	<%= link_to 'Back', root_path %>
-<% else %>
-	<h1> Potential Episodes </h1>
-</br>
-	<table>
-	  <thead>
-	    <tr>
-	      	<th> </th>
-	      	<th>Date: </th>
-	      	<th>Podcast Name: </th>
-	      	<th>Episode Title: </th>
-	      	<th>Description: </th>
-	      	<th colspan="3"></th>
-	    </tr>
-	  </thead>
+<% else %> <!-- Returning search results in this scenario. -->
+	<h1> Potential Episodes for <%= @star[:name].capitalize %> </h1>
+	<% unless @names.include?(@star.name.downcase) %>
+        <%= link_to "Create Star", stars_path(star: {:name => @star[:name]}), :method => :post %>
+        <!--   The link above passes the star name into the Star#create method which creates a star with just a name -->
+        <!--   Probably want to just reload this page with an alert - the star was created.  -->
+    <% end %>
 
-	  <tbody>
-	    <% @episodes_arr.each do |ep| %>
-	    <% sec = (ep["pub_date_ms"].to_f / 1000).to_s %>
-	      <tr>
-	      	<td><%=  %></td>
-	        <td><%= Date.strptime(sec, '%s') %></td>	        
-	        <td><%= ep["podcast_title_original"] %></td>
-	        <td><%= ep["title_original"] %></td>
-	        <td><%= ep["description_original"] %></td>
-	        
-	        <td><%=  %></td>
-	      </tr>
-	    <% end %>
-	  </tbody>
-	</table>
+</br>
+	<%= render 'ep_list' %>
 
 <% end %>
 

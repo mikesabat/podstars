@@ -35,12 +35,14 @@ class StarsController < ApplicationController
       @star = Star.new 
       @star.name = params[:name]
       puts @star.name
+      #creating a star name to use in the View
       
       star_n = params[:name].strip
       star_query = star_n.gsub(/\s+/, "+")
       puts "We are going to lookup #{star_query}"
       star_query_link = "https://listennotes.p.mashape.com/api/v1/search?len_min=10&offset=0&only_in=title&published_after=0&q=#{star_query}&sort_by_date=0&type=episode" 
       mashape_key = ENV['MASHAPE_KEY']
+      #setting variables to use in the API search
       
       # These code snippets use an open-source library. http://unirest.io/ruby
       @response = HTTParty.get star_query_link,
@@ -48,29 +50,22 @@ class StarsController < ApplicationController
        'X-Mashape-Key' => mashape_key,
        "Accept" => "application/json"
      }
+     #searching the API for this star
      puts @response
      num_of_results = @response["count"]
      puts num_of_results
 
      @episodes_arr = @response["results"]
-     
-    @episodes_arr.each do |ep|
-      puts "here's another ep."
-      puts ep["podcast_id"]
-    end
 
+      @names = []
+      Star.all.each do |star|
+        @names.push(star.name.downcase)
+      end
 
-      
-
-      # response = HTTParty.get(pod_lookup_link, format: :plain)
-      # json_response = JSON.parse response, symbolize_names: true
-
-      # num_of_results = json_response[:resultCount]
-      # results = json_response[:results]
-
-      # @actual_data = results[0]
-
-      # @podcast = {:name => @actual_data[:collectionName], :host => @actual_data[:artistName], :feed => @actual_data[:feedUrl], :image_url => @actual_data[:artworkUrl60], :big_image =>@actual_data[:artworkUrl600]}
+      unless @names.include?(@star.name.downcase)
+        puts "YESSSSSS"
+      end
+      #if the search name 
 
     else
       @star = Star.new
@@ -84,11 +79,16 @@ class StarsController < ApplicationController
   # POST /stars
   # POST /stars.json
   def create
+    g = params[:name]
+    puts "+++++++"
+    puts g
     @star = Star.new(star_params)
+    #(:name => params[:name]) 
+    #I'm sidestepping the Strong parameters. My gut says that I'm not naming the parameters correctly coming from the link.
 
     respond_to do |format|
       if @star.save
-        format.html { redirect_to @star, notice: 'Star was successfully created.' }
+        format.html { redirect_to @star, notice: 'Star was successfully created.' } 
         format.json { render :show, status: :created, location: @star }
       else
         format.html { render :new }
@@ -129,6 +129,6 @@ class StarsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def star_params
-      params.require(:star).permit(:name, :bio, :link, :image)
+       params.require(:star).permit(:name, :bio, :link, :image)
     end
 end   
