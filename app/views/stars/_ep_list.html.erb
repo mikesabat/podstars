@@ -18,7 +18,7 @@
 	        <td><%= Date.strptime(sec, '%s') %></td>	        
 	        <td><%= ep["podcast_title_original"] %></td>
 	        <td><%= ep["title_original"] %></td>
-	        <td><%= ep["description_original"] %></td>
+	        <td><%= ep["description_original"].truncate(50) %></td>
 	        
 	        <td><%=  %></td>
 	      </tr>
