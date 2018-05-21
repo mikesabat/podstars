@@ -1,5 +1,11 @@
 # README
 
+Learnings....
+linking_to a controler action and passing params. 
+<%= link_to "Create Star", stars_path(star: {:name => @star[:name]}), :method => :post %>
+link_to "Display Text", path(params_object: {:param_label = param_value}), :method => :post (method = post to trigger create)
+
+
 5/6 - from branch: show ep2
 Status: Most of the basic crud is built via scaffolding. We need to customize a lot of the relationships. 
 
@@ -56,16 +62,16 @@ Search for guest >> list podcast with guest in the title. check
  - Should we save search?
  - How does pagination work?
 ENV Variables for mashape API key. check
-Click on Episode "+" button
- - If Star isn't already created, create Star.
- - If podcast isn't already created, create Podcast
+ - Create Star link on star search results. redirect to star show and list podcasts. Check
+ Click on Episode "+" button
+ - If podcast isn't already created, create Podcast **** Going to do this in the Episode#Create action. If we try to create an episode for a podcast that doesn't exist, we will create it. 
  - Create Episode and list it for Star.
 Save Podcast image from search/url.
 
  Next
   - pull all of podcasts, not just the first 10.
   - Download Audio for episode and put it in player on the site. 
-  - Shorten the Episode description in the view, with the ability to "Show More..."
+  - Shorten the Episode description in the view, with the ability to "Show More..." check .truncate()
 ** We cannot link directly to an episode in itunes. It will just link to the page.
  -- Can we find a way to link directly.
  -- Can we put a player on the site?

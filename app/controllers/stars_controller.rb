@@ -33,7 +33,7 @@ class StarsController < ApplicationController
     #let's query and list all of the potential podcasts for this star. 
     star_query = @star.name.strip.gsub(/\s+/, "+")
 
-     response = HTTParty.get "https://listennotes.p.mashape.com/api/v1/search?len_min=10&offset=6&only_in=title&published_after=0&q=#{star_query}&sort_by_date=0&type=episode",
+     response = HTTParty.get "https://listennotes.p.mashape.com/api/v1/search?len_min=10&offset=0&only_in=title&published_after=0&q=#{star_query}&sort_by_date=0&type=episode",
         headers:{
         'X-Mashape-Key' => ENV['MASHAPE_KEY'],
         "Accept" => "application/json"

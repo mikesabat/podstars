@@ -14,7 +14,7 @@
 	    <% @episodes_arr.each do |ep| %>
 	    <% sec = (ep["pub_date_ms"].to_f / 1000).to_s %>
 	      <tr>
-	      	<td><%=  %></td>
+	      	<td><%= link_to "Add Episode", episodes_path(episode: {:star_id => @star.id, :title => ep["title_original"]}, star: {:id => @star[:id]}, podcast: {:name => ep["podcast_title_original"]}), :method => :post  %></td>  
 	        <td><%= Date.strptime(sec, '%s') %></td>	        
 	        <td><%= ep["podcast_title_original"] %></td>
 	        <td><%= ep["title_original"] %></td>

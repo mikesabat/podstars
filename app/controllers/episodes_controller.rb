@@ -24,10 +24,32 @@ class EpisodesController < ApplicationController
   # POST /episodes
   # POST /episodes.json
   def create
+    #put all of the podcast names into an array. Can we just name this method? Where do we stash it? can this help https://stackoverflow.com/questions/6350035/how-would-i-check-if-a-value-is-found-in-an-array-of-values
+    pod_param = params[:podcast]
+    pod_name = pod_param["name"]
+
+    all_podcast_names = []
+    Podcast.all.each do |p|
+      all_podcast_names.push(p.name)
+    end
+
+    if all_podcast_names.include? pod_name
+      puts "This podcast exists!!!!!!!!"
+    else
+      puts "Doesn't exist++++++"
+    end
+
+    #if podcast name doesn't == an existing Podcast name, then create Podcast with this name. Pass that podcast ID back to this episode to save with the Ep.
+    #puts params
+    #Podcast.find_or_create_by(name: 'PenÃ©lope')
     @episode = Episode.new(episode_params)
     @star = Star.find(@episode.star_id)
+
     #when we create an episode, we create an instance variable for the star of that episode. We are using this @star for the redirect.
     #might need to add this to edit method if we decide to open that up.
+    ppp = params[:podcast]
+    puts ppp["name"] #this works
+
     
     if @episode.podcast_id == nil
       redirect_to lookup_path, :alert => "Sorry, please create the podcast first"
@@ -78,6 +100,6 @@ class EpisodesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def episode_params
-      params.require(:episode).permit(:title, :description, :star_id, :podcast_id)
+      params.require(:episode).permit(:title, :description, :star_id, :podcast_id, :api_id)
     end
 end
