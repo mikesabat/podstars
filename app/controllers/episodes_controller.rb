@@ -24,33 +24,33 @@ class EpisodesController < ApplicationController
   # POST /episodes
   # POST /episodes.json
   def create
-    #put all of the podcast names into an array. Can we just name this method? Where do we stash it? can this help https://stackoverflow.com/questions/6350035/how-would-i-check-if-a-value-is-found-in-an-array-of-values
+    #bring in the params in from the list of potential podcasts. Zach: how to do this in a single line?
     pod_param = params[:podcast]
     pod_name = pod_param["name"]
 
-    all_podcast_names = []
-    Podcast.all.each do |p|
-      all_podcast_names.push(p.name)
-    end
+    pod = Podcast.find_or_create_by(name: pod_name)
+    puts "#{pod.id} + #{pod.name}" #got it
+  
 
-    if all_podcast_names.include? pod_name
-      puts "This podcast exists!!!!!!!!"
-    else
-      puts "Doesn't exist++++++"
-    end
-
-    #if podcast name doesn't == an existing Podcast name, then create Podcast with this name. Pass that podcast ID back to this episode to save with the Ep.
-    #puts params
-    #Podcast.find_or_create_by(name: 'PenÃ©lope')
     @episode = Episode.new(episode_params)
     @star = Star.find(@episode.star_id)
+    @episode.podcast_id = pod.id
+
+    puts @star.name #got it
+    puts @episode.title #got it
+    puts @episode.star_id #got it
+    puts @episode.podcast_id #set above
+    puts @episode.description
+    puts @episode.api_id
+    puts "!!!!!!!!!!!!!!!!!!"
+
 
     #when we create an episode, we create an instance variable for the star of that episode. We are using this @star for the redirect.
     #might need to add this to edit method if we decide to open that up.
-    ppp = params[:podcast]
-    puts ppp["name"] #this works
+    # ppp = params[:podcast]
+    # puts ppp["name"] #this works
 
-    
+    #This is for the dropdown menu
     if @episode.podcast_id == nil
       redirect_to lookup_path, :alert => "Sorry, please create the podcast first"
       #notice doesn't show when arriving on"/podcasts/new" Is it possible to move this logic to a berfore_save callback?

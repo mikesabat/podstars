@@ -64,11 +64,13 @@ Search for guest >> list podcast with guest in the title. check
 ENV Variables for mashape API key. check
  - Create Star link on star search results. redirect to star show and list podcasts. Check
  Click on Episode "+" button
- - If podcast isn't already created, create Podcast **** Going to do this in the Episode#Create action. If we try to create an episode for a podcast that doesn't exist, we will create it. 
- - Create Episode and list it for Star.
-Save Podcast image from search/url.
+ - If podcast isn't already created, create Podcast **** Going to do this in the Episode#Create action. If we try to create an episode for a podcast that doesn't exist, we will create it. Check
+ - Create Episode and list it for Star. Check
+
 
  Next
+ Save Podcast image from search/url.
+ Make sure episodes are unique
   - pull all of podcasts, not just the first 10.
   - Download Audio for episode and put it in player on the site. 
   - Shorten the Episode description in the view, with the ability to "Show More..." check .truncate()
