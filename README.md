@@ -69,9 +69,12 @@ ENV Variables for mashape API key. check
 
 
  Next
+ Lose the episode form on the star/show page. Check
  Save Podcast image from search/url.
  Make sure episodes are unique
-  - pull all of podcasts, not just the first 10.
+ pull all of episodes, not just the first 10.
+ When we add an episode to a star, remove it from potential episode list.
+ Change Star_id and podcast_id from Star - Episode list/show page. 
   - Download Audio for episode and put it in player on the site. 
   - Shorten the Episode description in the view, with the ability to "Show More..." check .truncate()
 ** We cannot link directly to an episode in itunes. It will just link to the page.
