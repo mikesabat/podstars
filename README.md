@@ -66,12 +66,13 @@ ENV Variables for mashape API key. check
  Click on Episode "+" button
  - If podcast isn't already created, create Podcast **** Going to do this in the Episode#Create action. If we try to create an episode for a podcast that doesn't exist, we will create it. Check
  - Create Episode and list it for Star. Check
+   - Shorten the Episode description in the view, with the ability to "Show More..." check .truncate()
 
 
  Next
  Lose the episode form on the star/show page. Check
  Save Podcast image from search/url. Check
- We are creating podcast simply with names via Star > Episode > Create flow. On the Podcast/index we should have a lookup button, that pulls the itunes information.
+ We are creating podcast simply with names via Star > Episode > Create flow. On the Podcast/index we should have a lookup button, that pulls the itunes information. Check
 
 **Admin flow:
 1. Think of a star.
@@ -87,7 +88,9 @@ ENV Variables for mashape API key. check
  When we add an episode to a star, remove it from potential episode list.
  Change Star_id and podcast_id from Star - Episode list/show page. 
   - Download Audio for episode and put it in player on the site. 
-  - Shorten the Episode description in the view, with the ability to "Show More..." check .truncate()
+
+
+
 ** We cannot link directly to an episode in itunes. It will just link to the page.
  -- Can we find a way to link directly.
  -- Can we put a player on the site?
