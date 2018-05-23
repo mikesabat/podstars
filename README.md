@@ -70,7 +70,18 @@ ENV Variables for mashape API key. check
 
  Next
  Lose the episode form on the star/show page. Check
- Save Podcast image from search/url.
+ Save Podcast image from search/url. Check
+ We are creating podcast simply with names via Star > Episode > Create flow. On the Podcast/index we should have a lookup button, that pulls the itunes information.
+
+**Admin flow:
+1. Think of a star.
+2. Search the star to see if they have podcasts
+3. Create the Star > Add bio etc.
+4. Select Episodes from potential list.
+5. Selection with find or create podcast and add Episode to Star.
+6. Manually clean up podcast by clicking "Get itunes details." Can we do this automatically?
+
+
  Make sure episodes are unique
  pull all of episodes, not just the first 10.
  When we add an episode to a star, remove it from potential episode list.

@@ -43,6 +43,7 @@ class EpisodesController < ApplicationController
     puts @episode.description
     puts @episode.api_id
     puts "!!!!!!!!!!!!!!!!!!"
+    #need to clean this up. 
 
 
     #when we create an episode, we create an instance variable for the star of that episode. We are using this @star for the redirect.

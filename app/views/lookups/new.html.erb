@@ -19,7 +19,7 @@
   				<td><%= @podcast[:name] %></td>
   				<td><%= @podcast[:host] %></td>
   				<td><%= @podcast[:feed] %></td>
-  				<td><%= link_to "Create Podcast", podcasts_path(:hhh => @podcast[:host], :name => @podcast[:name], :feed => @podcast[:feed], :image => @podcast[:big_image]), :method => :post, multipart: true %> </td>
+  				<td><%= link_to "Create Podcast", podcasts_path(:hhh => @podcast[:host], :name => @podcast[:name], :feed => @podcast[:feed], :image_url => @podcast[:big_image]), :method => :post, multipart: true %> </td>
   			</tr> 				
   			
   		</tbody>

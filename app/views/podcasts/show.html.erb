@@ -5,9 +5,11 @@
   <%= @podcast.name %>
 </p>
 
-<% if @podcast.image.exists? %>
+<!--<% if @podcast.image.exists? %>
   <p><%= image_tag @podcast.image.url(:medium) %></p>
-<% end %>
+<% end %> -->
+
+<p> <%= image_tag @podcast.image_url %> </p>
 <p>
   <strong>Host:</strong>
   <%= @podcast.host %>

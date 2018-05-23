@@ -6,18 +6,27 @@ class Podcast < ApplicationRecord
 	validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
 	validates :name, uniqueness: true
 	attr_reader :picture_from_url
+	before_save :get_details
 	
-	# def picture_from_url(url)
-	# 	self.image = URI.parse(url)
-	# end
-	
-	#another attempt
-	# def image_remote_url(url)
- #    	self.image = URI.parse(url)
- #    	# @podcast_remote_url = podcast_remote_url
- #  	end
+	def get_details #how do we call the name attribute in the before_save callback
+		puts "+++++++++++++++++++++++++++ BEFORE_SAVE PODCAST CALLBACK"
+		it_lookup = self.name.gsub(/\s+/, "+") #is this right?
+		pod_lookup_link = "https://itunes.apple.com/search?attribute=titleTerm&entity=podcast&media=podcast&term=#{it_lookup}&limit=5&lang=en_us"
 
-	#to resize images with paperclip -- has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
-	#and then <%= image_tag @article.image.url(:medium) %>
-	#from http://tutorials.jumpstartlab.com/projects/blogger.html
+		response = HTTParty.get(pod_lookup_link, format: :plain)
+		json_response = JSON.parse response, symbolize_names: true
+
+		num_of_results = json_response[:resultCount]
+		results = json_response[:results]
+
+		@actual_data = results[0]
+		puts @actual_data #this works, just need to add to Podcast before save. 
+		self.feed = @actual_data[:feedUrl]
+		self.host = @actual_data[:artistName]
+		self.image_url = @actual_data[:artworkUrl600]
+		self.homepage = @actual_data[:collectionViewUrl]
+
+		puts "We are creating a new podcast with feed = #{self.feed}, host = #{self.host}, image url = #{self.image_url} and homepage = #{self.homepage}"
+		
+	end
 end

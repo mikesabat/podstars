@@ -13,6 +13,7 @@ class LookupsController < ApplicationController
 			results = json_response[:results]
 
 			@actual_data = results[0]
+			puts @actual_data
 
 			@podcast = {:name => @actual_data[:collectionName], :host => @actual_data[:artistName], :feed => @actual_data[:feedUrl], :image_url => @actual_data[:artworkUrl60], :big_image =>@actual_data[:artworkUrl600]}
 
@@ -22,3 +23,4 @@ class LookupsController < ApplicationController
 	end
 
 end
+#can I just move this to the Podcast Model and then create a before_save callback. 
