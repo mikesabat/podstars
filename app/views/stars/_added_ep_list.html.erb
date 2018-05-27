@@ -1,0 +1,25 @@
+<h2> Added <%= @star.name %> Podcasts </h2><br/>
+
+<table>
+  <thead>
+    <tr>  <th>    </th>
+          <th>Date: </th>
+          <th>Podcast Name: </th>
+          <th>Episode Title: </th>
+          <th>Description: </th>
+          <th colspan="3"></th>
+      </tr>
+  </thead>
+
+  <tbody>
+    <% @episodes.each do |ep| %>
+      <tr>
+        <td><%= image_tag(Podcast.find(ep.podcast_id).image_url, :size => "75x75") %> </td>
+        <td><%=  %></td>
+        <td><%= Podcast.find(ep.podcast_id).name %></td>
+        <td><%= ep.title %></td>
+        <td><%= ep.description.truncate(200) %></td>        
+      </tr>
+    <% end %>
+  </tbody>
+</table>

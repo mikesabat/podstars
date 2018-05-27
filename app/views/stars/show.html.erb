@@ -22,30 +22,9 @@
 <%= link_to 'Edit', edit_star_path(@star) %>
 
 <br/>
-<h2> Added <%= @star.name %> Podcasts </h2><br/>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Star ID</th>
-      <th>Pod ID</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @episodes.each do |ep| %>
-      <tr>
-        <td><%= ep.title %></td>
-        <td><%= ep.description %></td>
-        <td><%= ep.star_id %></td>
-        <td><%= ep.podcast_id %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% if @episodes.exists? %>
+  <%= render 'added_ep_list' %>
+<% end %>
 
 </br>
 

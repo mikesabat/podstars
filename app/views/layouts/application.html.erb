@@ -9,6 +9,12 @@
   </head>
 
   <body>
+  	<header class="navbar  navbar-inverse">
+  		<ul class="nav navbar-nav">
+  			<li><%=link_to "Stars", root_path%></li>
+  			<li><%=link_to "Podcasts", podcasts_path%></li>
+  		</ul>
+  	</header>
     <%= yield %>
   </body>
 </html>

@@ -83,11 +83,34 @@ ENV Variables for mashape API key. check
 6. Manually clean up podcast by clicking "Get itunes details." Can we do this automatically?
 
 
- Make sure episodes are unique
+May23 Cleanup
+ nav bar = /stars and /podcasts +Check
+ Remove "New Star" from Stars page +Check
+ Make sure episodes are unique +Check
+ Add Podcast name to added Episodes Check
+ Change Star_id and podcast_id from Star - Episode list/show page. Check - gone
+
+  Add Date to podcast list ????? Zach
+ Size podcast image. - Check. Hacked in view. Zach?
+ Add podcast image icon to /podcasts list check
+ Removed Description from podcasts/index list. Check
+ highlight "Creat Star" link. Add a </br> there. wait on highlight color. 
+ Display star last name with a capital letter. Check
+
+ On star/show - don't show podcasts or th's if there are no episodes.
+ Change "date" on Episode
+ Podcast image links to /podcast
+ Added Jason Lemkin Podcasts change:to Displayed JL Podcasts
+ Change star link to Wikipedia.
+ Larger Episode description in the potential list. Limited (500 chars) description in the actual list.
+ Clean up all of the puts in controllers. 
+ Add ++++++++ CONTROLLER#ACTION to puts in controllers. 
+
+
  pull all of episodes, not just the first 10.
  When we add an episode to a star, remove it from potential episode list.
- Change Star_id and podcast_id from Star - Episode list/show page. 
   - Download Audio for episode and put it in player on the site. 
+
 
 
 

@@ -42,7 +42,9 @@ class EpisodesController < ApplicationController
     puts @episode.podcast_id #set above
     puts @episode.description
     puts @episode.api_id
+    puts @episode.date
     puts "!!!!!!!!!!!!!!!!!!"
+    puts episode_params
     #need to clean this up. 
 
 
@@ -63,7 +65,7 @@ class EpisodesController < ApplicationController
         format.html { redirect_to @star, notice: 'Episode was successfully created for ' + @star.name }
         format.json { render :show, status: :created, location: @episode }
       else
-        format.html { render :new }
+        format.html { redirect_to @star, notice: "We couldn't create that episode for " + @star.name}
         format.json { render json: @episode.errors, status: :unprocessable_entity }
       end
     end
@@ -101,6 +103,6 @@ class EpisodesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def episode_params
-      params.require(:episode).permit(:title, :description, :star_id, :podcast_id, :api_id)
+      params.require(:episode).permit(:title, :description, :star_id, :podcast_id, :api_id, :date)
     end
 end

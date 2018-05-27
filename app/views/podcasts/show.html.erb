@@ -9,7 +9,7 @@
   <p><%= image_tag @podcast.image.url(:medium) %></p>
 <% end %> -->
 
-<p> <%= image_tag @podcast.image_url %> </p>
+<p> <%= image_tag(@podcast.image_url, :size => "300x300") %> </p>
 <p>
   <strong>Host:</strong>
   <%= @podcast.host %>
