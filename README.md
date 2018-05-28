@@ -90,21 +90,20 @@ May23 Cleanup
  Add Podcast name to added Episodes Check
  Change Star_id and podcast_id from Star - Episode list/show page. Check - gone
 
-  Add Date to podcast list ????? Zach
+ Add Date to podcast list -- "date" is a reserved word in rails check
  Size podcast image. - Check. Hacked in view. Zach?
  Add podcast image icon to /podcasts list check
  Removed Description from podcasts/index list. Check
  highlight "Creat Star" link. Add a </br> there. wait on highlight color. 
  Display star last name with a capital letter. Check
-
- On star/show - don't show podcasts or th's if there are no episodes.
- Change "date" on Episode
- Podcast image links to /podcast
- Added Jason Lemkin Podcasts change:to Displayed JL Podcasts
- Change star link to Wikipedia.
- Larger Episode description in the potential list. Limited (500 chars) description in the actual list.
- Clean up all of the puts in controllers. 
- Add ++++++++ CONTROLLER#ACTION to puts in controllers. 
+ On star/show - don't show podcasts or th's if there are no episodes. check
+ Change "date" on Episode check
+ Added Jason Lemkin Podcasts change:to Displayed JL Podcasts Check
+ Change star link to Wikipedia. - No, we'll do Wikipedia or angellist links manually. Check
+ Larger Episode description in the potential list. Limited (500 chars) description in the actual list. Check
+ Podcast image links to /podcast check
+ Clean up all of the puts in controllers. check
+ Add ++++++++ CONTROLLER#ACTION to puts in controllers. check
 
 
  pull all of episodes, not just the first 10.

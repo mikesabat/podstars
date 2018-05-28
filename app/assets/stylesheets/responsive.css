@@ -1,0 +1,468 @@
+/* Extra Large Layout: >1400px. */
+ @media (min-width: 1400px) {
+}
+/* Large Layout: 1280px. */
+ @media (min-width: 1200px) {
+     .container {
+         max-width: 1170px;
+    }
+}
+/* Medium Layout: 992px. */
+ @media only screen and (max-width: 1200px) {
+     .section-padding {
+         padding: 90px 0;
+    }
+     .section-padding-top {
+         padding: 90px 0 0;
+    }
+     .section-header {
+         margin: 0 0 50px;
+    }
+     p.slugan {
+         margin: 0 0 14px;
+    }
+    /*banner section*/
+     .welcome-text {
+         min-height: 600px;
+    }
+     .welcome-text.page-header {
+         height: 400px;
+         min-height: auto;
+    }
+     .welcome-text h1 {
+         font-size: 158px;
+    }
+     .welcome-text h2 {
+         font-size: 38px;
+    }
+    /*profile section*/
+     .profile-content .profile, .profile-content .skills {
+         padding: 25px;
+    }
+     .profile-part h3 {
+         font-size: 22px;
+         line-height: 1.4;
+         margin: 0 0 20px;
+    }
+     .profile-info address p {
+         margin: 0 0 18px;
+         white-space: nowrap;
+    }
+     .profile-info address p strong {
+         width: 69px;
+    }
+     .profile-info address .download_btn {
+         margin: 28px 0px;
+    }
+     .profie-social {
+         margin: 0 -40px -25px -25px;
+    }
+     .profie-social ul li {
+         height: 44px;
+         line-height: 44px;
+    }
+     .progress-item-wrap {
+         margin: 0 0 12px;
+    }
+     .progress-item-wrap .progress {
+         height: 10px;
+    }
+     .skill-text {
+         margin: 0 0 9px;
+    }
+    /*services section*/
+     .single-service {
+         padding: 25px;
+    }
+     .ctext .counter-count {
+         font-size: 50px;
+    }
+    /*resume section*/
+     .hicom {
+         margin: 8px 12px;
+    }
+    /*journal section*/
+     .news-details {
+         padding: 25px;
+    }
+    /*contact section*/
+     .contact-form {
+         padding: 25px;
+    }
+    /*footer section*/
+     footer.footer-area {
+         padding: 25px 0;
+    }
+}
+/* Tablet Layout: 768px. */
+ @media only screen and (max-width: 992px) {
+     .section-padding {
+         padding: 70px 0;
+    }
+     .section-padding-top {
+         padding: 70px 0 0;
+    }
+     .section-header {
+         margin: 0 0 40px;
+    }
+    /*header-area*/
+     .header-menu li a, .mainmenu.navbar-dark .navbar-nav a.nav-link {
+         padding: 18px 5px;
+    }
+    /*profile area*/
+     .profile-part h3 {
+         margin: 0 0 30px;
+    }
+     .profile-info address p {
+         margin: 0px 0 22px;
+    }
+     .profile-info address p strong {
+         width: 90px;
+    }
+     .profile-info address .download_btn {
+         margin: 57px 0px;
+    }
+     .profie-social {
+         margin: 0 -25px -25px -25px;
+    }
+     .profie-social ul li {
+         height: 48px;
+         line-height: 48px;
+    }
+     .profile-photo {
+         padding-right: 0;
+         padding-left: 0;
+    }
+     .progress-item-wrap {
+         margin: 0 0 15px;
+    }
+    /*about me*/
+     .about-area blockquote p {
+         font-size: 16px;
+         padding-left: 40px;
+         margin-left: 20px;
+         margin-top: 20px;
+         margin-bottom: 20px;
+    }
+     .about-area blockquote p:after {
+         font-size: 25px;
+    }
+     .about-area blockquote span {
+         font-size: 20px;
+         margin: 0 0 0 65px;
+    }
+    /*services-area*/
+     .single-service-counter {
+         -webkit-box-pack: center;
+         -ms-flex-pack: center;
+         justify-content: center;
+    }
+     .scicon {
+         margin-right: -10px;
+    }
+     .scicon i {
+         font-size: 40px;
+    }
+     .ctext .counter-count {
+         font-size: 45px;
+    }
+    /*portfolio area*/
+     ul.portfolio-filter li {
+         margin: 0 5px 15px;
+    }
+     .filtr-item {
+         width: 50%;
+    }
+    /*blog section*/
+     .single-news h4 {
+         font-size: 18px;
+         margin: 0 0 10px;
+    }
+     .single-news p {
+         line-height: 1.6;
+         margin: 0 0 10px;
+    }
+     hr.hline {
+         margin: 5px 0;
+    }
+     .news_meta {
+         font-size: 12px;
+    }
+    /*footer area*/
+     footer.footer-area {
+         padding: 20px 0;
+    }
+    /*single-page*/
+     .blog_title h3 {
+         font-size: 26px;
+         line-height: inherit;
+    }
+}
+/* Mobile Layout: 320px. */
+ @media only screen and (max-width: 767px) {
+     .section-padding {
+         padding: 60px 0;
+    }
+     .section-padding-top {
+         padding: 60px 0 0;
+    }
+     .section-header {
+         margin: 0 0 25px;
+    }
+     .section-header h2 {
+         font-size: 28px;
+         margin: 0;
+    }
+     p.slugan {
+         font-size: 16px;
+    }
+    /*header area*/
+     .header-menu.navbar-nav li:first-child {
+         border-top: 1px solid #aaaaaa4d;
+    }
+    .header-menu li a, .mainmenu.navbar-dark .navbar-nav a.nav-link {
+         padding: 9px 10px;
+         border-bottom: 1px solid #aaaaaa4d;
+    }
+     .main-wrap {
+         position: relative;
+    }
+     header.header-area {
+         background: rgba(0, 0, 0, 0.8);
+         z-index: 999;
+    }
+     .navbar-dark .navbar-toggler {
+         border-color: rgba(255, 255, 255, .8);
+         padding: 2px 7px;
+         margin: 6px 0;
+    }
+     .navbar-toggler:focus, .navbar-toggler:hover {
+         text-decoration: none;
+         outline: none;
+    }
+     .mainmenu.navbar, .is-sticky .mainmenu.navbar {
+         padding: 5px 0;
+    }
+     ul.header-menu {
+         padding: 10px 0;
+    }
+     ul.sub-menu {
+         position: static;
+         border-top: 0px;
+    }
+     .mainmenu.navbar-dark .navbar-nav ul.sub-menu li a.nav-link {
+         border-bottom: 1px solid #aaaaaa4d;
+    }
+     .header-menu li a i.fa-angle-down {
+         float: right;
+         padding: 12px;
+         margin: -9px;
+    }
+    /*banner area*/
+     .welcome-text {
+         min-height: 320px;
+         height: 50vh;
+    }
+     .welcome-text h1 {
+         font-size: 90px;
+    }
+     .welcome-text h2 {
+         font-size: 22px;
+    }
+    /*profile area*/
+     .profile-part h3 {
+         margin: 15px 0 30px;
+         font-size: 22px;
+         line-height: 1.4;
+    }
+     .profile-info address .download_btn {
+         margin: 30px 0px;
+    }
+     .profile-info address .download_btn a {
+         padding: 10px 18px;
+    }
+     .profie-social {
+         margin: 0 -15px -15px;
+    }
+    /*about area*/
+     .about-area blockquote p {
+         padding-left: 35px;
+         margin-left: 15px;
+         margin-top: 15px;
+         margin-bottom: 15px;
+    }
+     .about-area blockquote span {
+         margin: 0 0 0 55px;
+    }
+    /*services area*/
+     .single-service {
+         padding: 15px;
+    }
+     .service-counter {
+         margin-top: 30px;
+    }
+    /*resume area*/
+     .education-bg {
+         margin-bottom: 35px;
+    }
+     .single-timeline {
+         padding: 0 0 35px 18px;
+    }
+     .hicom {
+         margin: 5px 10px;
+    }
+     .hicom i {
+         font-size: 20px;
+         height: 40px;
+         width: 40px;
+         line-height: 40px;
+    }
+    /*portfolio area*/
+     ul.portfolio-filter li {
+         padding: 16px 25px;
+         margin: 0 5px 15px;
+         min-width: 140px;
+         line-height: 1;
+         text-align: center;
+    }
+     .filtr-item {
+         width: 100%;
+    }
+     .portfolioitems .filtr-item .item-desc .text {
+         padding: 25px;
+    }
+    /*blog/journal area*/
+     .news .single-news:nth-child(2n) div:first-child {
+         -webkit-box-ordinal-group: 2;
+         -ms-flex-order: 1;
+         order: 1;
+    }
+    .news .col-md-12:nth-child(n+1) .single-news div:first-child,
+    .blog-page-area .news .col-md-12 .single-news div:first-child,
+    .blog-page-area .news .col-md-12:nth-child(2n+1) .single-news div:first-child  {
+         -webkit-box-ordinal-group: 2;
+         -ms-flex-order: 1;
+         order: 1;
+    }
+     .news-details {
+         width: 100%;
+    }
+     .single-news p {
+         line-height: 2;
+         margin: 0 0 15px;
+    }
+     hr.hline {
+         margin: 15px 0;
+    }
+     .news-featured-image {
+         width: 100%;
+         min-height: 160px;
+    }
+     .news-featured-image img {
+         display: block;
+    }
+    /*single page*/
+     .blog_title h3 {
+         font-size: 17px;
+    }
+     .blog_secndary_title {
+         font-size: 16px;
+    }
+     ul.blog_list_elements li p {
+         display: inline;
+    }
+     .welcome-text.page-header {
+         min-height: 220px;
+         height: 30vh;
+    }
+     .welcome-text.page-header h2{
+         margin: 0;
+    }
+     .post_nav_area .nav_btn {
+         margin-bottom: 15px;
+    }
+     .reply_comments {
+         margin-left: 30px;
+    }
+     .comment_wrapper .cmnt_img {
+         width: 45px;
+         height: 45px;
+    }
+     .comment_wrapper .pull-left {
+         padding-right: 10px;
+    }
+}
+/* Wide Mobile Layout: 540px. */
+ @media only screen and (min-width: 576px) and (max-width: 767px) {
+     .blog_content_wrapper {
+         padding: 15px;
+    }
+     .filtr-item {
+         width: 50%;
+    }
+     .portfolioitems .filtr-item .item-desc .text {
+         padding: 20px;
+    }
+     .portfolioitems .filtr-item .text h4 {
+         font-size: 13px;
+         margin: 0;
+    }
+     .item-desc p.client {
+         font-size: 12px;
+    }
+     .blog_title h3 {
+         font-size: 22px;
+    }
+}
+ @media only screen and (max-width: 480px) {
+    /*profile area*/
+     .profile-info address p {
+         white-space: normal;
+    }
+     .profile-info address p strong {
+         display: -webkit-box;
+         display: -ms-flexbox;
+         display: flex;
+    }
+    /*portfolio area*/
+    /*contact area*/
+     .contact-part {
+         width: 100%;
+         min-height: 300px;
+    }
+    /*footer area*/
+     footer.footer-area p {
+         font-size: 12px;
+    }
+    /*single page*/
+     .blog_content_wrapper {
+         padding: 15px;
+    }
+     .author_info {
+         padding: 15px;
+    }
+     .author_info .admin_img {
+         height: 70px;
+         width: 70px;
+         vertical-align: top;
+    }
+     .author_info .admin_info {
+         width: calc(100% - 75px);
+         vertical-align: middle;
+         padding-left: 10px;
+    }
+}
+/* Mobile Layout: 380px. */
+ @media only screen and (max-width: 380px) {
+    /*services area*/
+     .scicon i {
+         font-size: 35px;
+    }
+     .ctext .counter-count {
+         font-size: 40px;
+    }
+     .ctext p {
+         font-size: 12px;
+    }
+}
+ 

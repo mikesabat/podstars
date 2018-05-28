@@ -10,8 +10,6 @@
 	<h1> Potential Episodes for <%= @star[:name].split.map(&:capitalize)*' ' %> </h1> </br>
 	<% unless @names.include?(@star.name.downcase) %>
         <%= link_to "Create Star", stars_path(star: {:name => @star[:name]}), :method => :post %> </br>
-        <!--   The link above passes the star name into the Star#create method which creates a star with just a name -->
-        <!--   Probably want to just reload this page with an alert - the star was created.  -->
     <% end %>
 
 	</br>

@@ -15,11 +15,11 @@
 	    <% sec = (ep["pub_date_ms"].to_f / 1000).to_s %>
 	    <% date = Date.strptime(sec, '%s') %>
 	      <tr>
-	      	<td><%= link_to "Add Episode", episodes_path(episode: {:star_id => @star.id, :date => date, :title => ep["title_original"], :description => ep["description_original"], :api_id => ep["id"]}, star: {:id => @star[:id]}, podcast: {:name => ep["podcast_title_original"]}), :method => :post  %></td>  <!--date: => date, --> 
+	      	<td><%= link_to "Add Episode", episodes_path(episode: {:star_id => @star.id, :release_date => date, :title => ep["title_original"], :description => ep["description_original"], :api_id => ep["id"]}, star: {:id => @star[:id]}, podcast: {:name => ep["podcast_title_original"]}), :method => :post  %></td> 
 	        <td><%= date %></td>	        
 	        <td><%= ep["podcast_title_original"] %></td>
 	        <td><%= ep["title_original"] %></td>
-	        <td><%= ep["description_original"].truncate(50) %></td>
+	        <td><%= ep["description_original"].truncate(100) %></td>
 	        
 	        <td><%=  %></td>
 	      </tr>

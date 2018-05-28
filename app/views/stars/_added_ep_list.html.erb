@@ -1,4 +1,4 @@
-<h2> Added <%= @star.name %> Podcasts </h2><br/>
+<h2> Displayed <%= @star.name %> Podcasts </h2><br/>
 
 <table>
   <thead>
@@ -14,11 +14,11 @@
   <tbody>
     <% @episodes.each do |ep| %>
       <tr>
-        <td><%= image_tag(Podcast.find(ep.podcast_id).image_url, :size => "75x75") %> </td>
-        <td><%=  %></td>
+        <td><%= link_to (image_tag(Podcast.find(ep.podcast_id).image_url, :size => "75x75")), podcast_path(ep.podcast_id) %> </td>
+        <td><%= ep.release_date  %></td>
         <td><%= Podcast.find(ep.podcast_id).name %></td>
         <td><%= ep.title %></td>
-        <td><%= ep.description.truncate(200) %></td>        
+        <td><%= ep.description.truncate(500) %></td>        
       </tr>
     <% end %>
   </tbody>

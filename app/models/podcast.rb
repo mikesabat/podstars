@@ -19,14 +19,13 @@ class Podcast < ApplicationRecord
 		num_of_results = json_response[:resultCount]
 		results = json_response[:results]
 
-		@actual_data = results[0]
-		puts @actual_data #this works, just need to add to Podcast before save. 
+		@actual_data = results[0] 
 		self.feed = @actual_data[:feedUrl]
 		self.host = @actual_data[:artistName]
 		self.image_url = @actual_data[:artworkUrl600]
 		self.homepage = @actual_data[:collectionViewUrl]
 
-		puts "We are creating a new podcast with feed = #{self.feed}, host = #{self.host}, image url = #{self.image_url} and homepage = #{self.homepage}"
+		
 		
 	end
 end

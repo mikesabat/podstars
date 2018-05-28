@@ -24,9 +24,9 @@ class PodcastsController < ApplicationController
   # POST /podcasts
   # POST /podcasts.json
   def create
+    puts "++++++++ podcast#create"
     @podcast = Podcast.new(:name => params[:name], :host => params[:hhh], :feed => params[:feed], :image_url => params[:image_url]) #, :image => URI.parse(params[:image])
     url = params[:image]
-    # @podcast.picture_from_url(url)
     
     respond_to do |format|
       if @podcast.save

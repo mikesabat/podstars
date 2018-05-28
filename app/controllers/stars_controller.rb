@@ -12,22 +12,24 @@ class StarsController < ApplicationController
   # GET /stars/1
   # GET /stars/1.json
   def show
+    puts "++++++++ star#show"
     @star = Star.find(params[:id])
-    puts @star.name
+    # puts @star.name
     @episodes = @star.episodes
-    puts "++++ episodes"
-    puts @episodes
+    # puts "++++ episodes"
+    # puts @episodes
     @episode = Episode.new
     @podcasts = Podcast.all
 
-    @choices = [] 
-    @podcasts.each do |p| 
-      pod = [] 
-      pod.push(p.name, p.id) 
-      @choices.push(pod) 
-    end 
+    # @choices = [] 
+    # @podcasts.each do |p| 
+    #   pod = [] 
+    #   pod.push(p.name, p.id) 
+    #   @choices.push(pod) 
+    # end 
     
-    @choices.push(["Create New Podcast", nil]) 
+    # @choices.push(["Create New Podcast", nil]) 
+    #above was used for the dropdown.
 
     #above this shows how to manually enter a podcast episode with this star. Below, we want to query itunes for this star and display the resutls. 
     #let's query and list all of the potential podcasts for this star. 
@@ -41,8 +43,9 @@ class StarsController < ApplicationController
 
       num_of_results = response["count"]
       @episodes_arr = response["results"]
-      puts num_of_results
-      puts @episodes_arr
+      # puts num_of_results
+      # puts @episodes_arr
+      #above puts shows all potential episodes. 
     
                 # The method and while loop are attempts to collect all possible episodes for the Star
                 # def all_episodes(star, offset) 
@@ -68,6 +71,7 @@ class StarsController < ApplicationController
 
   # GET /stars/new
   def new
+    puts "++++++++ star#new"
     if params[:name]
       @star = Star.new 
       @star.name = params[:name]
@@ -88,7 +92,7 @@ class StarsController < ApplicationController
        "Accept" => "application/json"
      }
      #searching the API for this star
-     puts @response
+     # puts @response
      num_of_results = @response["count"]
 
 
@@ -117,9 +121,7 @@ class StarsController < ApplicationController
   # POST /stars.json
   def create
     @star = Star.new(star_params)
-    #(:name => params[:name]) 
-    #I'm sidestepping the Strong parameters. My gut says that I'm not naming the parameters correctly coming from the link.
-
+    
     respond_to do |format|
       if @star.save
         format.html { redirect_to @star, notice: 'Star was successfully created.' } 
