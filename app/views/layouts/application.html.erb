@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js" lang="en">
   <head>
-    <title>Podstars</title>
+    <title>Podcast Allstars</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
-  	<header class="navbar  navbar-inverse">
+
+  	 <header class="navbar  navbar-inverse">
   		<ul class="nav navbar-nav">
   			<li><%=link_to "Stars", root_path%></li>
   			<li><%=link_to "Podcasts", podcasts_path%></li>
   		</ul>
-  	</header>
+  	</header> 
+
     <%= yield %>
+
   </body>
 </html>

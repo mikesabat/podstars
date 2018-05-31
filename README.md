@@ -106,8 +106,22 @@ May23 Cleanup
  Add ++++++++ CONTROLLER#ACTION to puts in controllers. check
 
 
- pull all of episodes, not just the first 10.
+pull all of episodes, not just the first 10.
  When we add an episode to a star, remove it from potential episode list.
+
+
+
+
+May 29 -Template PUSH THIS LATER
+
+
+
+
+
+
+
+
+
   - Download Audio for episode and put it in player on the site. 
 
 
