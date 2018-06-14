@@ -14,43 +14,11 @@ class StarsController < ApplicationController
   def show
     puts "++++++++ star#show"
     @star = Star.find(params[:id])
-    # puts @star.name
     @episodes = @star.episodes
-    # puts "++++ episodes"
-    # puts @episodes
     @episode = Episode.new
-    @podcasts = Podcast.all
+    #@podcasts = Podcast.all #we don't need to pull in podcasts
 
-    # @choices = [] 
-    # @podcasts.each do |p| 
-    #   pod = [] 
-    #   pod.push(p.name, p.id) 
-    #   @choices.push(pod) 
-    # end 
-    
-    # @choices.push(["Create New Podcast", nil]) 
-    #above was used for the dropdown.
-
-    #above this shows how to manually enter a podcast episode with this star. Below, we want to query itunes for this star and display the resutls. 
-    #let's query and list all of the potential podcasts for this star. 
     star_query = @star.name.strip.gsub(/\s+/, "+")
-
-
-
-
-     #  #create a function and then call the function increasing offset each time. 
-     # response = HTTParty.get "https://listennotes.p.mashape.com/api/v1/search?len_min=10&offset=0&only_in=title&published_after=0&q=#{star_query}&sort_by_date=0&type=episode",
-     #    headers:{
-     #    'X-Mashape-Key' => ENV['MASHAPE_KEY'],
-     #    "Accept" => "application/json"
-     #  }
-
-     #  num_of_results = response["count"]
-     #  @episodes_arr = response["results"]
-
-     #  # puts num_of_results
-     #  # puts @episodes_arr
-     #  #above puts shows all potential episodes. 
 
 
 
@@ -67,7 +35,6 @@ class StarsController < ApplicationController
           'X-Mashape-Key' => ENV['MASHAPE_KEY'],
           "Accept" => "application/json"
         }
-          puts "99999999999999999999999999999999"
           #episodes_arr << response["results"] #adds the current results to the array. Nope..
           response["results"].each { |r| episodes_arr << r}
           num += response["count"].to_i #increases the offset by the number of results that we just found
@@ -77,19 +44,17 @@ class StarsController < ApplicationController
           results = response["count"]
           puts "The latest lookup has #{results} results in there. "
           puts episodes_arr
-          puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
-          puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
-          puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
 
         end
         return episodes_arr
       end
 
+      #if Star SearchCache update == nil or > one week ago -- run the query and save @episodes_arr to model.
       @episodes_arr = all_eps(star_query, 0)
-
-      # puts num_of_results
-      #puts @episodes_arr
-      #above puts shows all potential episodes. 
+      sc = SearchCache.new
+      sc.star_id = @star.id
+      sc.search = @episodes_arr
+      sc.save
     
   end
 
