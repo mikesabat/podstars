@@ -35,38 +35,62 @@ class StarsController < ApplicationController
     #let's query and list all of the potential podcasts for this star. 
     star_query = @star.name.strip.gsub(/\s+/, "+")
 
-     response = HTTParty.get "https://listennotes.p.mashape.com/api/v1/search?len_min=10&offset=0&only_in=title&published_after=0&q=#{star_query}&sort_by_date=0&type=episode",
-        headers:{
-        'X-Mashape-Key' => ENV['MASHAPE_KEY'],
-        "Accept" => "application/json"
-      }
 
-      num_of_results = response["count"]
-      @episodes_arr = response["results"]
+
+
+     #  #create a function and then call the function increasing offset each time. 
+     # response = HTTParty.get "https://listennotes.p.mashape.com/api/v1/search?len_min=10&offset=0&only_in=title&published_after=0&q=#{star_query}&sort_by_date=0&type=episode",
+     #    headers:{
+     #    'X-Mashape-Key' => ENV['MASHAPE_KEY'],
+     #    "Accept" => "application/json"
+     #  }
+
+     #  num_of_results = response["count"]
+     #  @episodes_arr = response["results"]
+
+     #  # puts num_of_results
+     #  # puts @episodes_arr
+     #  #above puts shows all potential episodes. 
+
+
+
+      #this works, but super innefficient. 
+      def all_eps(query, offset)
+        episodes_arr = []
+        results = 10
+        num = offset
+
+        while results == 10
+
+          response = HTTParty.get "https://listennotes.p.mashape.com/api/v1/search?len_min=10&offset=#{num}&only_in=title&published_after=0&q=#{query}&sort_by_date=0&type=episode",
+          headers:{
+          'X-Mashape-Key' => ENV['MASHAPE_KEY'],
+          "Accept" => "application/json"
+        }
+          puts "99999999999999999999999999999999"
+          #episodes_arr << response["results"] #adds the current results to the array. Nope..
+          response["results"].each { |r| episodes_arr << r}
+          num += response["count"].to_i #increases the offset by the number of results that we just found
+          
+          count = episodes_arr.count
+          puts "There are now #{count} in the array"
+          results = response["count"]
+          puts "The latest lookup has #{results} results in there. "
+          puts episodes_arr
+          puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+          puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+          puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+
+        end
+        return episodes_arr
+      end
+
+      @episodes_arr = all_eps(star_query, 0)
+
       # puts num_of_results
-      # puts @episodes_arr
+      #puts @episodes_arr
       #above puts shows all potential episodes. 
     
-                # The method and while loop are attempts to collect all possible episodes for the Star
-                # def all_episodes(star, offset) 
-                    
-                #     @response = HTTParty.get "https://listennotes.p.mashape.com/api/v1/search?len_min=10&offset=#{offset}&only_in=title&published_after=0&q=#{star}&sort_by_date=0&type=episode",
-                #    headers:{
-                #    'X-Mashape-Key' => ENV['MASHAPE_KEY'],
-                #    "Accept" => "application/json"
-                #  }
-                #     all_eps.push(@response["results"])
-                #     offset += 10
-                # end
-
-                # offset = 0
-                # all_eps = []
-
-                # while num_of_results != 0 
-                #   all_episodes(star_query, offset) 
-                #   puts"--------"
-                #   puts all_eps         
-                # end
   end
 
   # GET /stars/new

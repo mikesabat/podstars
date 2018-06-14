@@ -105,9 +105,12 @@ May23 Cleanup
  Clean up all of the puts in controllers. check
  Add ++++++++ CONTROLLER#ACTION to puts in controllers. check
 
-
-pull all of episodes, not just the first 10.
- When we add an episode to a star, remove it from potential episode list.
+********
+pull all of episodes, not just the first 10. Check
+Save all episodes looked up and the date that we saved/updated this Model attribute. 
+When page loads, only query the API if it's been at least a week since the last query. 
+Limit, sort and save some of the results - not all. less than 3 years old, sort by date.
+When we add an episode to a star, remove it from potential episode list.
 
 
 
