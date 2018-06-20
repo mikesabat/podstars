@@ -17,6 +17,9 @@ class StarsController < ApplicationController
     @episodes = @star.episodes
     @episode = Episode.new
     #@podcasts = Podcast.all #we don't need to pull in podcasts
+    search_cache = SearchCache.where(star_id: @star.id)
+
+    
 
     star_query = @star.name.strip.gsub(/\s+/, "+")
 
@@ -43,18 +46,29 @@ class StarsController < ApplicationController
           puts "There are now #{count} in the array"
           results = response["count"]
           puts "The latest lookup has #{results} results in there. "
-          puts episodes_arr
 
         end
         return episodes_arr
       end
+        
 
-      #if Star SearchCache update == nil or > one week ago -- run the query and save @episodes_arr to model.
-      @episodes_arr = all_eps(star_query, 0)
-      sc = SearchCache.new
-      sc.star_id = @star.id
-      sc.search = @episodes_arr
-      sc.save
+      if search_cache.exists?
+        last_update = search_cache.last[:updated_at]
+        next_update = last_update + 7.days
+      end
+
+     if search_cache.exists? && next_update > Date.today
+        @episodes_arr = search_cache.last[:search].to_a
+        puts "GGGGGGGGGGGGGGGGGGGG"
+        puts "We don't need to look up the potential podcast episodes."
+      else
+        @episodes_arr = all_eps(star_query, 0)
+        puts @episodes_arr.class
+        sc = SearchCache.new
+        sc.star_id = @star.id
+        sc.search = @episodes_arr #saving as String. Need to save as array.
+        sc.save
+     end
     
   end
 
