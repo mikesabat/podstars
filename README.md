@@ -106,8 +106,10 @@ May23 Cleanup
  Add ++++++++ CONTROLLER#ACTION to puts in controllers. check
 
 
-pull all of episodes, not just the first 10.
- When we add an episode to a star, remove it from potential episode list.
+pull all of episodes, not just the first 10. check
+Sort by date and save all episodes from the last 3 years. check
+Add a display boolean to the Episodes Model.
+If display boolean is checked, then show the episode on the Star Show page.
 
 
 

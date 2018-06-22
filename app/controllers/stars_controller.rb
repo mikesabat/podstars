@@ -14,59 +14,69 @@ class StarsController < ApplicationController
   def show
     puts "++++++++ star#show"
     @star = Star.find(params[:id])
-    # puts @star.name
     @episodes = @star.episodes
-    # puts "++++ episodes"
-    # puts @episodes
-    @episode = Episode.new
-    @podcasts = Podcast.all
+    #@episode = Episode.new
+    #@podcasts = Podcast.all #we don't need all the podcasts.
 
-    # @choices = [] 
-    # @podcasts.each do |p| 
-    #   pod = [] 
-    #   pod.push(p.name, p.id) 
-    #   @choices.push(pod) 
-    # end 
-    
-    # @choices.push(["Create New Podcast", nil]) 
-    #above was used for the dropdown.
-
-    #above this shows how to manually enter a podcast episode with this star. Below, we want to query itunes for this star and display the resutls. 
-    #let's query and list all of the potential podcasts for this star. 
     star_query = @star.name.strip.gsub(/\s+/, "+")
 
-     response = HTTParty.get "https://listennotes.p.mashape.com/api/v1/search?len_min=10&offset=0&only_in=title&published_after=0&q=#{star_query}&sort_by_date=0&type=episode",
-        headers:{
-        'X-Mashape-Key' => ENV['MASHAPE_KEY'],
-        "Accept" => "application/json"
-      }
+    #this works, but super innefficient. 
+      def all_eps(query, offset)
+        episodes_arr = []
+        results = 10
+        num = offset
 
-      num_of_results = response["count"]
-      @episodes_arr = response["results"]
-      # puts num_of_results
-      # puts @episodes_arr
-      #above puts shows all potential episodes. 
-    
-                # The method and while loop are attempts to collect all possible episodes for the Star
-                # def all_episodes(star, offset) 
-                    
-                #     @response = HTTParty.get "https://listennotes.p.mashape.com/api/v1/search?len_min=10&offset=#{offset}&only_in=title&published_after=0&q=#{star}&sort_by_date=0&type=episode",
-                #    headers:{
-                #    'X-Mashape-Key' => ENV['MASHAPE_KEY'],
-                #    "Accept" => "application/json"
-                #  }
-                #     all_eps.push(@response["results"])
-                #     offset += 10
-                # end
+        while results == 10
 
-                # offset = 0
-                # all_eps = []
+          response = HTTParty.get "https://listennotes.p.mashape.com/api/v1/search?len_min=10&offset=#{num}&only_in=title&published_after=0&q=#{query}&sort_by_date=0&type=episode",
+          headers:{
+          'X-Mashape-Key' => ENV['MASHAPE_KEY'],
+          "Accept" => "application/json"
+        }
+          #episodes_arr << response["results"] #adds the current results to the array. Nope..
+          response["results"].each { |r| episodes_arr << r}
+          num += response["count"].to_i #increases the offset by the number of results that we just found
+          
+          count = episodes_arr.count
+          puts "There are now #{count} in the array"
+          results = response["count"]
+          puts "The latest lookup has #{results} results in there. "
 
-                # while num_of_results != 0 
-                #   all_episodes(star_query, offset) 
-                #   puts"--------"
-                #   puts all_eps         
-                # end
+        end
+        return episodes_arr
+      end
+
+      many_episodes = all_eps(star_query, 0)
+      many_episodes.select! do |e| 
+        limit = Date.today - 3.years
+        def comparable_date(f)
+          sec = (f["pub_date_ms"].to_f / 1000).to_s
+          dform = Date.strptime(sec, '%s')
+        end
+        comparable_date(e) > limit
+      end #holy shit this works! Needs cleanup
+
+      #save each episode - works
+      many_episodes.each do |ep|
+        new_ep = Episode.new
+        pod_name = ep["podcast_title_original"]
+        pod = Podcast.find_or_create_by(name: pod_name)
+        new_ep.star_id = @star.id
+        new_ep.podcast_id = pod.id
+        new_ep.title = ep["title_original"]
+        new_ep.description = ep["description_original"]
+        new_ep.api_id = ep["id"]
+        sec = (ep["pub_date_ms"].to_f / 1000).to_s
+        dform = Date.strptime(sec, '%s')
+        new_ep.release_date = dform
+        new_ep.save
+      end
+
+      @episodes_arr = many_episodes.sort_by { |e| e["pub_date_ms"]}.reverse
+
+      #Need to save @episodes_arr
+
+      puts "PPPPPPPPPPPPPPPPPPPP"
   end
 
   # GET /stars/new
