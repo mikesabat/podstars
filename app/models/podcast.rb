@@ -10,8 +10,8 @@ class Podcast < ApplicationRecord
 	
 	def get_details #how do we call the name attribute in the before_save callback
 		puts "+++++++++++++++++++++++++++ BEFORE_SAVE PODCAST CALLBACK"
-		it_lookup = self.name.gsub(/\s+/, "+") #is this right?
-		pod_lookup_link = "https://itunes.apple.com/search?attribute=titleTerm&entity=podcast&media=podcast&term=#{it_lookup}&limit=5&lang=en_us"
+		it_lookup = self.name.gsub(/\s+/, "+") 
+		pod_lookup_link = URI.encode("https://itunes.apple.com/search?attribute=titleTerm&entity=podcast&media=podcast&term=#{it_lookup}&limit=5&lang=en_us")
 
 		response = HTTParty.get(pod_lookup_link, format: :plain)
 		json_response = JSON.parse response, symbolize_names: true

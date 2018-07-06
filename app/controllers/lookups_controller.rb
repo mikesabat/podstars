@@ -2,8 +2,10 @@ class LookupsController < ApplicationController
 	def new
 		if params[:lookup]
 			@lookup = params[:lookup].strip
-			it_lookup = @lookup.gsub(/\s+/, "+")
-			pod_lookup_link = "https://itunes.apple.com/search?attribute=titleTerm&entity=podcast&media=podcast&term=#{it_lookup}&limit=5&lang=en_us" 
+			it_lookup = @lookup.gsub(/\s+/, "+").encode("UTF-8")
+			linky = "https://itunes.apple.com/search?attribute=titleTerm&entity=podcast&media=podcast&term=#{it_lookup}&limit=5&lang=en_us"
+			pod_lookup_link = URI.encode(linky) 
+			puts pod_lookup_link
 
 
 			response = HTTParty.get(pod_lookup_link, format: :plain)

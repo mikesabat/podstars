@@ -109,6 +109,10 @@ May23 Cleanup
 pull all of episodes, not just the first 10. check
 Sort by date and save all episodes from the last 3 years. check
 ---Need to rebuild from github changes.---
+BUGS
+-Klosterman - can't connect to listen notes - in the star#new controller. Sabat works, so thinking this has something to do with more than 10 results. 
+-Lemkin - loading show page for existing Star - FeedURL is nil?
+-Zach van ness - stars#show - URI ASCii bug -- for the name we lookup in itunes fixed!! https://stackoverflow.com/questions/15700784/how-to-fix-bad-uri-is-not-uri
 Add a display boolean to the Episodes Model.
 If display boolean is checked, then show the episode on the Star Show page.
 Don't lookup new episodes if the search has been done within last 2 weeks.

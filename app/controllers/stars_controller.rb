@@ -116,7 +116,7 @@ class StarsController < ApplicationController
       unless @names.include?(@star.name.downcase)
         puts "YESSSSSS"
       end
-      #if the search name 
+      #server will print YESS if this star is a new name
 
     else
       @star = Star.new
