@@ -13,8 +13,9 @@
 
   <tbody>
     <% @episodes.each do |ep| %>
-      <tr>
-        <td><%= link_to (image_tag(Podcast.find(ep.podcast_id).image_url, :size => "75x75")), podcast_path(ep.podcast_id) %> </td>
+        <% if Podcast.find(ep.podcast_id).image_url != nil %>
+          <td><%= link_to (image_tag(Podcast.find(ep.podcast_id).image_url, :size => "75x75")), podcast_path(ep.podcast_id) %> </td>
+        <% end %>
         <td><%= ep.release_date  %></td>
         <td><%= Podcast.find(ep.podcast_id).name %></td>
         <td><%= ep.title %></td>
@@ -23,3 +24,4 @@
     <% end %>
   </tbody>
 </table>
+

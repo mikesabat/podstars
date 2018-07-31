@@ -11,19 +11,24 @@ class Podcast < ApplicationRecord
 	def get_details #how do we call the name attribute in the before_save callback
 		puts "+++++++++++++++++++++++++++ BEFORE_SAVE PODCAST CALLBACK"
 		it_lookup = self.name.gsub(/\s+/, "+") 
+		puts it_lookup #remove this
 		pod_lookup_link = URI.encode("https://itunes.apple.com/search?attribute=titleTerm&entity=podcast&media=podcast&term=#{it_lookup}&limit=5&lang=en_us")
 
 		response = HTTParty.get(pod_lookup_link, format: :plain)
+		puts response.class
 		json_response = JSON.parse response, symbolize_names: true
+		puts json_response
 
 		num_of_results = json_response[:resultCount]
 		results = json_response[:results]
 
-		@actual_data = results[0] 
-		self.feed = @actual_data[:feedUrl]
-		self.host = @actual_data[:artistName]
-		self.image_url = @actual_data[:artworkUrl600]
-		self.homepage = @actual_data[:collectionViewUrl]
+		if num_of_results > 0
+			@actual_data = results[0] 
+			self.feed = @actual_data[:feedUrl]
+			self.host = @actual_data[:artistName]
+			self.image_url = @actual_data[:artworkUrl600]
+			self.homepage = @actual_data[:collectionViewUrl]
+		end
 
 		
 		
