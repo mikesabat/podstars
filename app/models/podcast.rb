@@ -16,18 +16,25 @@ class Podcast < ApplicationRecord
 
 		response = HTTParty.get(pod_lookup_link, format: :plain)
 		puts response.class
-		json_response = JSON.parse response, symbolize_names: true
-		puts json_response
+		puts response
+		
+		if response.parsed_response != nil
+			json_response = JSON.parse response, symbolize_names: true
+		
+			#puts json_response
 
-		num_of_results = json_response[:resultCount]
-		results = json_response[:results]
+			num_of_results = json_response[:resultCount]
+			results = json_response[:results]
 
-		if num_of_results > 0
-			@actual_data = results[0] 
-			self.feed = @actual_data[:feedUrl]
-			self.host = @actual_data[:artistName]
-			self.image_url = @actual_data[:artworkUrl600]
-			self.homepage = @actual_data[:collectionViewUrl]
+			if num_of_results > 0
+				@actual_data = results[0] 
+				self.feed = @actual_data[:feedUrl]
+				self.host = @actual_data[:artistName]
+				self.image_url = @actual_data[:artworkUrl600]
+				self.homepage = @actual_data[:collectionViewUrl]
+			end
+		else
+			return
 		end
 
 		
