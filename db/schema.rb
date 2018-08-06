@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180527021755) do
+ActiveRecord::Schema.define(version: 20180806013138) do
+
+  create_table "ep_search_caches", force: :cascade do |t|
+    t.text "full_search"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index [nil], name: "index_ep_search_caches_on_star_id"
+  end
 
   create_table "episodes", force: :cascade do |t|
     t.string "title"
@@ -21,6 +28,7 @@ ActiveRecord::Schema.define(version: 20180527021755) do
     t.datetime "updated_at", null: false
     t.string "api_id"
     t.date "release_date"
+    t.boolean "display"
     t.index ["podcast_id"], name: "index_episodes_on_podcast_id"
     t.index ["star_id"], name: "index_episodes_on_star_id"
   end
@@ -38,6 +46,13 @@ ActiveRecord::Schema.define(version: 20180527021755) do
     t.integer "image_file_size"
     t.datetime "image_updated_at"
     t.string "image_url"
+  end
+
+  create_table "search_caches", force: :cascade do |t|
+    t.text "search"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "star_id"
   end
 
   create_table "stars", force: :cascade do |t|
