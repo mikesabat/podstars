@@ -13,8 +13,8 @@
   </thead>
 
   <tbody>
-    <% @episodes.each do |ep| %>
-        <td> Display Podcast Link </td>
+    <% @display_episodes.each do |ep| %>
+        <td> Remove Episode from Display </td>
         <% if Podcast.find(ep.podcast_id).image_url != nil %>
           <td><%= link_to (image_tag(Podcast.find(ep.podcast_id).image_url, :size => "75x75")), podcast_path(ep.podcast_id) %> </td>
           <% else %>
@@ -28,4 +28,3 @@
     <% end %>
   </tbody>
 </table>
-

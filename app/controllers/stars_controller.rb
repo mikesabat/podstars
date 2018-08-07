@@ -73,6 +73,8 @@ class StarsController < ApplicationController
       end
 
       @episodes_arr = many_episodes.sort_by { |e| e["pub_date_ms"]}.reverse
+      @display_episodes = @episodes.where(display: true)
+      puts @display_episodes[0]["title"] #works!
 
       #Need to save @episodes_arr
 

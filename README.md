@@ -114,7 +114,7 @@ BUGS
 -Lemkin - loading show page for existing Star - FeedURL is nil? *Problem seems to be with more than 10 results - NoMethodError in StarsController#show
 -Zach van ness - stars#show - URI ASCii bug -- for the name we lookup in itunes fixed!! https://stackoverflow.com/questions/15700784/how-to-fix-bad-uri-is-not-uri
 
-Add a display boolean to the Episodes Model.
+Add a display boolean to the Episodes Model. Check
 If display boolean is checked, then show the episode on the Star Show page.
 Don't lookup new episodes if the search has been done within last 2 weeks.
 
