@@ -14,7 +14,7 @@
 
   <tbody>
     <% @episodes.each do |ep| %>
-        <td> Display Podcast Link </td>
+        <td><%= link_to "Display Podcast", episode_path(ep.id,{:display => true}), :method => :put  %></td> <!-- works, but I had to kill strong params.  -->
         <% if Podcast.find(ep.podcast_id).image_url != nil %>
           <td><%= link_to (image_tag(Podcast.find(ep.podcast_id).image_url, :size => "75x75")), podcast_path(ep.podcast_id) %> </td>
           <% else %>
@@ -29,3 +29,4 @@
   </tbody>
 </table>
 
+<!-- param is missing or the value is empty: -->
