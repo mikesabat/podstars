@@ -116,8 +116,9 @@ BUGS
 
 Add a display boolean to the Episodes Model. Check
 If display boolean is checked, then show the episode on the Star Show page. check
-After Episode update, reload star#show.
-Don't lookup new episodes if the search has been done within last 2 weeks.
+After Episode update, reload star#show. check
+Don't lookup new episodes if the search has been done within last 2 weeks. Works!
+Queue the search off of the last search... not the last episode updated_at. 
 
 
 

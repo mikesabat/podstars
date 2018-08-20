@@ -46,36 +46,41 @@ class StarsController < ApplicationController
         return episodes_arr
       end
 
-      many_episodes = all_eps(star_query, 0)
-      many_episodes.select! do |e| 
-        limit = Date.today - 3.years
-        def comparable_date(f)
-          sec = (f["pub_date_ms"].to_f / 1000).to_s
+      latest_episode = Episode.where("star_id = #{@star.id}").where({ updated_at: (Time.now - 14.day)..Time.now }).last
+      puts latest_episode
+      puts "MMMMMMMMMMMMMMMMMM"
+      if latest_episode == nil 
+        many_episodes = all_eps(star_query, 0)
+        many_episodes.select! do |e| 
+          limit = Date.today - 3.years
+          def comparable_date(f)
+            sec = (f["pub_date_ms"].to_f / 1000).to_s
+            dform = Date.strptime(sec, '%s')
+          end
+          comparable_date(e) > limit
+        end #holy shit this works! Needs cleanup
+
+        #save each episode - works
+        many_episodes.each do |ep|
+          new_ep = Episode.new
+          pod_name = ep["podcast_title_original"]
+          pod = Podcast.find_or_create_by(name: pod_name)
+          new_ep.star_id = @star.id
+          new_ep.podcast_id = pod.id
+          new_ep.title = ep["title_original"]
+          new_ep.description = ep["description_original"]
+          new_ep.api_id = ep["id"]
+          sec = (ep["pub_date_ms"].to_f / 1000).to_s
           dform = Date.strptime(sec, '%s')
+          new_ep.release_date = dform
+          new_ep.save
         end
-        comparable_date(e) > limit
-      end #holy shit this works! Needs cleanup
 
-      #save each episode - works
-      many_episodes.each do |ep|
-        new_ep = Episode.new
-        pod_name = ep["podcast_title_original"]
-        pod = Podcast.find_or_create_by(name: pod_name)
-        new_ep.star_id = @star.id
-        new_ep.podcast_id = pod.id
-        new_ep.title = ep["title_original"]
-        new_ep.description = ep["description_original"]
-        new_ep.api_id = ep["id"]
-        sec = (ep["pub_date_ms"].to_f / 1000).to_s
-        dform = Date.strptime(sec, '%s')
-        new_ep.release_date = dform
-        new_ep.save
+        @episodes_arr = many_episodes.sort_by { |e| e["pub_date_ms"]}.reverse
+      else
+        puts "WE DIDN RUN THE SEARCH"
       end
-
-      @episodes_arr = many_episodes.sort_by { |e| e["pub_date_ms"]}.reverse
       @display_episodes = @episodes.where(display: true)
-      puts @display_episodes[0]["id"] #works
-      puts "PPPPPPPPPPPPPPPPPPPP"
   end
 
   # GET /stars/new
