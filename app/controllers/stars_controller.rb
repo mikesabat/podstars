@@ -46,10 +46,18 @@ class StarsController < ApplicationController
         return episodes_arr
       end
 
-      latest_episode = Episode.where("star_id = #{@star.id}").where({ updated_at: (Time.now - 14.day)..Time.now }).last
-      puts latest_episode
-      puts "MMMMMMMMMMMMMMMMMM"
-      if latest_episode == nil 
+      if @star.last_search == nil
+        s = @star
+        s.last_search = Date.today - 10.days
+        puts s.last_search
+        s.save
+      end
+
+      l = @star.last_search < (Date.today - 2.days)
+      puts l 
+      #works
+
+      if l == true 
         many_episodes = all_eps(star_query, 0)
         many_episodes.select! do |e| 
           limit = Date.today - 3.years
@@ -77,6 +85,8 @@ class StarsController < ApplicationController
         end
 
         @episodes_arr = many_episodes.sort_by { |e| e["pub_date_ms"]}.reverse
+        @star.last_search = Date.today
+        @star.save
       else
         puts "WE DIDN RUN THE SEARCH"
       end

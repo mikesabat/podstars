@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180806013138) do
+ActiveRecord::Schema.define(version: 20180824011224) do
 
   create_table "ep_search_caches", force: :cascade do |t|
     t.text "full_search"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20180806013138) do
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
+    t.datetime "last_search"
   end
 
 end
